@@ -42,7 +42,7 @@ deploymentConfig:
         - name: 'deploy'
           type: KUBERNETES
           inputParameters:
-            deploymentYamlFiles: 'target/kubernetes/api_test/api_test.yaml'
+            deploymentYamlFiles: 'module-amazons3/target/kubernetes/api_test/api_test.yaml'
             exposedDeployments: 'api-test-deployment'
         - name: 'create-deployment.ballerina_integrator_outputs.sh'
           type: SHELL
