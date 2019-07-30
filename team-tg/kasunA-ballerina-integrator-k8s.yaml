@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-# A testGrid Job 
+# A testGrid Job
 version: '0.9'
 emailToList: "kasuna@wso2.com"
 infrastructureConfig:
