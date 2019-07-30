@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # A testGrid Job 
 version: '0.9'
 emailToList: "kasuna@wso2.com"
@@ -66,3 +67,6 @@ scenarioConfigs:
 
     # test.sh --input-dir /path/to/data-bucket --output-dir /path/sdsds
     # read the deployment.properties from --input-dir $2/deployment.properties 
+=======
+testgridYamlURL: https://raw.githubusercontent.com/KasunAratthanage/testgrid-job-configs/test_ballerina_integrator1/team-tg/kasunA-ballerina-integrator-k8s.yaml
+>>>>>>> 319eb04e2973bc52ad8bd9fea831daafd0f32a90
