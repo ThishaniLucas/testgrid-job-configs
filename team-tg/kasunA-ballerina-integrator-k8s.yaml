@@ -40,19 +40,11 @@ deploymentConfig:
             BallerinaVersion: "0.991.0"
             isDebugEnabled: "true"
             TestGroup: "api_test"
-<<<<<<< HEAD
 #        - name: 'deploy'
 #          type: KUBERNETES
 #          inputParameters:
 #            deploymentYamlFiles: 'module-amazons3/target/kubernetes/api_test/api_test.yaml'
 #            exposedDeployments: 'api-test-deployment'
-=======
-        - name: 'deploy'
-          type: KUBERNETES
-          inputParameters:
-            deploymentYamlFiles: 'module-amazons3/target/kubernetes/api_test/api_test.yaml'
-            exposedDeployments: 'api-test-deployment'
->>>>>>> e62bd01a997f32c295656448adc42ebda7744775
         - name: 'create-deployment.ballerina_integrator_outputs.sh'
           type: SHELL
           file: deploymentRepository/ballerina_integrator_outputs.sh # generate ballerina endpoint and write deployment.properties
@@ -74,7 +66,4 @@ scenarioConfigs:
 
 
     # test.sh --input-dir /path/to/data-bucket --output-dir /path/sdsds
-    # read the deployment.properties from --input-dir $2/deployment.properties 
-=======
-testgridYamlURL: https://raw.githubusercontent.com/KasunAratthanage/testgrid-job-configs/test_ballerina_integrator1/team-tg/kasunA-ballerina-integrator-k8s.yaml
->>>>>>> 319eb04e2973bc52ad8bd9fea831daafd0f32a90
+    # read the deployment.properties from --input-dir $2/deployment.properties
