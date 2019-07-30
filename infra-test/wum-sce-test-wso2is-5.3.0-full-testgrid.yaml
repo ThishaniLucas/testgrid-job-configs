@@ -1,12 +1,17 @@
 # TestGrid job configuration
 
 version: '0.9'
+<<<<<<< HEAD:infra-test/wum-sce-test-wso2is-5.3.0-full-testgrid.yaml
 emailToList: "kosala@wso2.com,ching@wso2.com,chamith@wso2.com,kasung@wso2.com"
+=======
+emailToList: "builder@wso2.org,thanuja@wso2.com,ayesha@wso2.com,kasung@wso2.com,chaminda@wso2.com,shanikaw@wso2.com,niluka@wso2.com,achinij@wso2.com,piraveena@wso2.com,sarubi@wso2.com,thushanthan@wso2.com"
+>>>>>>> 6cb48eb6305ded10c20b16de8dfcb08fc96ee9c3:WUM/wum-sce-test-wso2is-5.3.0-full-testgrid.yaml
 infrastructureConfig:
   iacProvider: CLOUDFORMATION
   infrastructureProvider: AWS
   containerOrchestrationEngine: None
   includes:
+<<<<<<< HEAD:infra-test/wum-sce-test-wso2is-5.3.0-full-testgrid.yaml
      - Ubuntu-18.04
      - CentOS-7.5
      - MySQL-5.6
@@ -19,6 +24,15 @@ infrastructureConfig:
      - Postgres-10.5
      - OracleJDK-8
      - OPEN_JDK8
+=======
+    - CentOS-7.5
+#     - SUSE-Linux-12
+    - MySQL-5.7
+    - Oracle-SE2-12.1
+    - SQLServer-SE-14.00
+    - Postgres-10.5
+    - OPEN_JDK8
+>>>>>>> 6cb48eb6305ded10c20b16de8dfcb08fc96ee9c3:WUM/wum-sce-test-wso2is-5.3.0-full-testgrid.yaml
   provisioners:
     - name: two-node-deployment
       remoteRepository: "git@github.com:wso2-support/aws-is.git"
@@ -41,9 +55,10 @@ infrastructureConfig:
           type: CLOUDFORMATION
           file: is-samples/test-is-samples.yml
           inputParameters:
-            AMI: "ami-01b72d1b13ca0b4bc"
+            AMI: "ami-0b707e6db70f15f97"
             KeyPairName: "deployment-prod"
             ProductVersion: "5.3.0"
+            region: "us-east-1"
 scenarioConfigs:
   - testType: TESTNG
     remoteRepository: "git@github.com:wso2-support/product-is.git"
@@ -51,5 +66,10 @@ scenarioConfigs:
     name: "1-manage-users-roles"
     description: "1-manage-users-roles"
     file: product-scenarios/test.sh
+<<<<<<< HEAD:infra-test/wum-sce-test-wso2is-5.3.0-full-testgrid.yaml
 
 
+=======
+    inputParameters:
+      RemoteProductDir: "/usr/lib/wso2/wso2is/5.3.0/wso2is-5.3.0"
+>>>>>>> 6cb48eb6305ded10c20b16de8dfcb08fc96ee9c3:WUM/wum-sce-test-wso2is-5.3.0-full-testgrid.yaml

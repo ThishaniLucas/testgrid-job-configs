@@ -1,19 +1,31 @@
 # TestGrid job configuration
 
 version: '0.9'
+<<<<<<< HEAD:team-apim/pasinduj-wum-wso2am-2.6.0-full.yaml
 emailToList: "pasinduj@wso2.com"
+=======
+emailToList: "apim-group@wso2.com,praminda@wso2.com,ruwini@wso2.com,kasung@wso2.com"
+>>>>>>> 6cb48eb6305ded10c20b16de8dfcb08fc96ee9c3:WUM/wum-sce-test-wso2am-2.6.0-full-testgrid.yaml
 infrastructureConfig:
   iacProvider: CLOUDFORMATION
   infrastructureProvider: AWS
   containerOrchestrationEngine: None
-  parameters:
-    - JDK : ORACLE_JDK8
   includes:
+<<<<<<< HEAD:team-apim/pasinduj-wum-wso2am-2.6.0-full.yaml
      - Ubuntu-18.04
      - Oracle-SE2-12.1
      - OracleJDK-8
      - CorrettoJDK-8
      - MySQL-5.7
+=======
+    - CentOS-7.5
+#     - SUSE-Linux-12
+    - MySQL-5.7
+    - Oracle-SE2-12.1
+    - SQLServer-SE-14.00
+    - Postgres-10.5
+    - OPEN_JDK8
+>>>>>>> 6cb48eb6305ded10c20b16de8dfcb08fc96ee9c3:WUM/wum-sce-test-wso2am-2.6.0-full-testgrid.yaml
   provisioners:
     - name: two-node-deployment
       remoteRepository: "git@github.com:wso2-support/aws-apim.git"
@@ -27,9 +39,10 @@ infrastructureConfig:
           inputParameters:
             parseInfrastructureScript: false
             KeyPairName: "deployment-prod"
-            CertificateName: "wso2cert"
+            CertificateName: "wso2cert_us_east_2"
             DBUsername: "wso2carbon"
             DBPassword: "DB_Password"
+            region: "us-east-2"
 scenarioConfigs:
   - testType: TESTNG
     remoteRepository: "https://github.com/pasindujw/product-apim.git"
@@ -37,3 +50,9 @@ scenarioConfigs:
     name: "apim-scenarios"
     description: "apim-scenarios"
     file: product-scenarios/test.sh
+<<<<<<< HEAD:team-apim/pasinduj-wum-wso2am-2.6.0-full.yaml
+=======
+    inputParameters:
+      RemoteProductDir: "/usr/lib/wso2/wso2am/2.6.0/wso2am-2.6.0"
+
+>>>>>>> 6cb48eb6305ded10c20b16de8dfcb08fc96ee9c3:WUM/wum-sce-test-wso2am-2.6.0-full-testgrid.yaml

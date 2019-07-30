@@ -1,12 +1,17 @@
 # TestGrid job configuration
 
 version: '0.9'
+<<<<<<< HEAD:infra-test/wum-sce-test-wso2esb-5.0.0-full-testgrid.yaml
 emailToList: "kosala@wso2.com,ching@wso2.com,chamith@wso2.com,kasung@wso2.com"
+=======
+emailToList: "builder@wso2.org,kasung@wso2.com,dulanjali@wso2.com"
+>>>>>>> 6cb48eb6305ded10c20b16de8dfcb08fc96ee9c3:WUM/wum-sce-test-wso2esb-5.0.0-full-testgrid.yaml
 infrastructureConfig:
   iacProvider: CLOUDFORMATION
   infrastructureProvider: AWS
   containerOrchestrationEngine: None
   includes:
+<<<<<<< HEAD:infra-test/wum-sce-test-wso2esb-5.0.0-full-testgrid.yaml
      - Ubuntu-18.04
      - CentOS-7.5
      - MySQL-5.6
@@ -19,12 +24,35 @@ infrastructureConfig:
      - Postgres-10.5
      - OracleJDK-8
      - OPEN_JDK8
+=======
+    - CentOS-7.5
+#   - SUSE-Linux-12
+    - MySQL-5.7
+    - Oracle-SE2-12.1
+    - SQLServer-SE-14.00
+    - Postgres-10.5
+    - OPEN_JDK8
+>>>>>>> 6cb48eb6305ded10c20b16de8dfcb08fc96ee9c3:WUM/wum-sce-test-wso2esb-5.0.0-full-testgrid.yaml
   provisioners:
     - name: single-node-deployment
       remoteRepository: "git@github.com:wso2-support/aws-esb.git"
       remoteBranch: "5.0.0"
       description: Provision Infra for running intg tests
       scripts:
+        - name: 'prod-wso2-ei-scenario-vfs-be-deployment'
+          description: ''
+          type: CLOUDFORMATION
+          file: esb/Sample-Backends/vfs-be.yaml
+          inputParameters:
+            KeyPairName: "deployment-prod"
+            FTPUserName: "wso2user"
+            FTPUserPassword: "FTPUserPassword"
+        - name: 'prod-wso2-ei-scenario-activemq-be-deployment'
+          description: ''
+          type: CLOUDFORMATION
+          file: esb/Sample-Backends/activemq-be.yaml
+          inputParameters:
+            KeyPairName: "deployment-prod"
         - name: 'prod-wso2-ei-scenario-deployment'
           description: ''
           type: CLOUDFORMATION
@@ -35,8 +63,12 @@ infrastructureConfig:
             CertificateName: "self-signed-cert"
             DBUsername: "wso2carbon"
             DBPassword: "DB_Password"
+<<<<<<< HEAD:infra-test/wum-sce-test-wso2esb-5.0.0-full-testgrid.yaml
             InternalPrepareForTest: "True"
             ElasticSearchEndpoint: "https://search-testgrid-prod-hn2zfvehc7i2edigkxnfjljc6y.us-east-1.es.amazonaws.com"              
+=======
+            region: "us-east-2"
+>>>>>>> 6cb48eb6305ded10c20b16de8dfcb08fc96ee9c3:WUM/wum-sce-test-wso2esb-5.0.0-full-testgrid.yaml
 scenarioConfigs:
   - testType: TESTNG
     remoteRepository: "https://github.com/wso2/product-ei.git"
@@ -46,3 +78,7 @@ scenarioConfigs:
     file: product-scenarios/test.sh
     inputParameters:
       ProductVersion: "ESB-5.0.0"
+<<<<<<< HEAD:infra-test/wum-sce-test-wso2esb-5.0.0-full-testgrid.yaml
+=======
+      RemoteProductDir: "/usr/lib/wso2/wso2esb/5.0.0/wso2esb-5.0.0"
+>>>>>>> 6cb48eb6305ded10c20b16de8dfcb08fc96ee9c3:WUM/wum-sce-test-wso2esb-5.0.0-full-testgrid.yaml
