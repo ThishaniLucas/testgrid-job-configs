@@ -39,14 +39,17 @@ deploymentConfig:
             BallerinaVersion: "0.991.0"
             isDebugEnabled: "true"
             TestGroup: "api_test"
-        - name: 'deploy'
-          type: KUBERNETES
-          inputParameters:
-            yamls: 'module-amazons3/target/kubernetes/api_test/api_test.yaml'
-            deployments: 'api_test'
+#        - name: 'deploy'
+#          type: KUBERNETES
+#          inputParameters:
+#            deploymentYamlFiles: 'module-amazons3/target/kubernetes/api_test/api_test.yaml'
+#            exposedDeployments: 'api-test-deployment'
         - name: 'create-deployment.ballerina_integrator_outputs.sh'
           type: SHELL
-          file: deploymentRepository/ballerina_integrator_outputs.sh  # generate ballerina endpoint and write deployment.properties
+          file: deploymentRepository/ballerina_integrator_outputs.sh # generate ballerina endpoint and write deployment.properties
+        - name: 'destroy-namespace.destroy_namespace.sh'
+          type: SHELL
+          file: deploymentRepository/destroy_namespace.sh
 
 # outputs a deployment.properties (ie. a scenario-test-inputs.properties)
 # This contains the deployment details that you output from the SHELL deployment-outputs.sh file.
