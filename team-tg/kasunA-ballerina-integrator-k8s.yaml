@@ -47,9 +47,9 @@ deploymentConfig:
         - name: 'create-deployment.ballerina_integrator_outputs.sh'
           type: SHELL
           file: deploymentRepository/ballerina_integrator_outputs.sh # generate ballerina endpoint and write deployment.properties
-        - name: 'destroy-namespace.destroy_namespace.sh'
-          type: SHELL
-          file: deploymentRepository/destroy_namespace.sh
+#        - name: 'destroy-namespace.destroy_namespace.sh'
+#          type: SHELL
+#          file: deploymentRepository/destroy_namespace.sh
 
 # outputs a deployment.properties (ie. a scenario-test-inputs.properties)
 # This contains the deployment details that you output from the SHELL deployment-outputs.sh file.
