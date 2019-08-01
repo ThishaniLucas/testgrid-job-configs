@@ -56,12 +56,17 @@ deploymentConfig:
 # for ex. this can contain BallerinaServiceEndpoint=http://10.100.1.100:9090/amazons3
 
 scenarioConfigs:
+  # - testType: TESTNG
+  #   remoteRepository: "https://github.com/KasunAratthanage/ballerina-integrator"
+  #   remoteBranch: "test_s3connector"
+  #   name: "examples"
+  #   description: "Test-Phase-1"
+  #   file: examples/test/tesh.sh
   - testType: TESTNG
-    remoteRepository: "https://github.com/KasunAratthanage/ballerina-integrator"
-    remoteBranch: "test_s3connector"
-    name: "examples"
+    remoteRepository: "https://github.com/KasunAratthanage/ballerina_s3_test"    
+    name: "test.sh"
     description: "Test-Phase-1"
-    file: examples/test/tesh.sh
+    file: tesh.sh
 
 
     # test.sh --input-dir /path/to/data-bucket --output-dir /path/sdsds
