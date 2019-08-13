@@ -66,7 +66,7 @@ scenarioConfigs:
     remoteRepository: "https://github.com/KasunAratthanage/ballerina_s3_test"    
     name: "test.sh"
     description: "Test-Phase-1"
-    file: tesh.sh
+    file: test.sh
 
 
     # test.sh --input-dir /path/to/data-bucket --output-dir /path/sdsds
