@@ -1,6 +1,6 @@
 # A testGrid Job
 version: '0.9'
-emailToList: "kasuna@wso2.com"
+emailToList: "thishani@wso2.com"
 infrastructureConfig:
   iacProvider: KUBERNETES
   infrastructureProvider: GKE
@@ -12,23 +12,20 @@ infrastructureConfig:
   provisioners:
     - name: kubernetes working environment
       description: Provision Infra for running intg tests
-      remoteRepository: "https://github.com/KasunAratthanage/wso2_testgrid_kubernetes.git"
+      remoteRepository: "https://github.com/ThishaniLucas/wso2_testgrid_kubernetes.git"
       remoteBranch: "branch1"
       scripts:
-        - name: 'Test-Phase-1-Deployment'
+        - name: 'BI-Deployment'
           description: ''
           type: KUBERNETES
           phase: CREATE
         - name: 'kubernetes-destroy-environment'
           type: KUBERNETES
           phase: DESTROY
-# deployment-inputs.properties (infrastructure.properties) <- contain the deployment inputParameters and infrastructure provisioner outputs.
-# for ex. this contain the kubernetes 'namespace', 'yamls', 'deployments' properties
-# namespace=deployment-abcrandom, yamls=target/kubernetes/api_test/api_test.yaml, deployments=wso2apim-with-analytics-apim     
 deploymentConfig:
   deploymentPatterns:
     - name: 'deployment'
-      remoteRepository: "https://github.com/KasunAratthanage/wso2_testgrid_kubernetes.git"
+      remoteRepository: "https://github.com/ThishaniLucas/wso2_testgrid_kubernetes.git"
       remoteBranch: "branch1"
       description: 'deployment of the resources in the gke'
       scripts:
@@ -39,35 +36,13 @@ deploymentConfig:
             BallerinaVersion: "0.991.0"
             isDebugEnabled: "true"
             TestGroup: "api_test"
-#        - name: 'deploy'
-#          type: KUBERNETES
-#          inputParameters:
-#            deploymentYamlFiles: 'module-amazons3/target/kubernetes/api_test/api_test.yaml'
-#            exposedDeployments: 'api-test-deployment'
-        - name: 'create-deployment.ballerina_integrator_outputs.sh'
+        - name: 'create-endpoint'
           type: SHELL
-          file: deploymentRepository/ballerina_integrator_outputs.sh # generate ballerina endpoint and write deployment.properties
-#        - name: 'destroy-namespace.destroy_namespace.sh'
-#          type: SHELL
-#          file: deploymentRepository/destroy_namespace.sh
-
-# outputs a deployment.properties (ie. a scenario-test-inputs.properties)
-# This contains the deployment details that you output from the SHELL deployment-outputs.sh file.
-# for ex. this can contain BallerinaServiceEndpoint=http://10.100.1.100:9090/amazons3
-
+          file: deploymentRepository/ballerina_integrator_outputs.sh
 scenarioConfigs:
-  # - testType: TESTNG
-  #   remoteRepository: "https://github.com/KasunAratthanage/ballerina-integrator"
-  #   remoteBranch: "test_s3connector"
-  #   name: "examples"
-  #   description: "Test-Phase-1"
-  #   file: examples/test/tesh.sh
   - testType: TESTNG
-    remoteRepository: "https://github.com/KasunAratthanage/ballerina_s3_test"    
+    remoteRepository: "https://github.com/ThishaniLucas/ballerina_s3_test"
     name: "test.sh"
-    description: "Test-Phase-1"
+    description: "scenarios"
     file: test.sh
-
-
-    # test.sh --input-dir /path/to/data-bucket --output-dir /path/sdsds
-    # read the deployment.properties from --input-dir $2/deployment.properties
+    
