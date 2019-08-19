@@ -12,10 +12,10 @@ infrastructureConfig:
   provisioners:
     - name: kubernetes working environment
       description: Provision Infra for running intg tests
-      remoteRepository: "https://github.com/ThishaniLucas/wso2_testgrid_kubernetes.git"
-      remoteBranch: "branch1"
+      remoteRepository: "https://github.com/ThishaniLucas/ballerina-integrator-testgrid-scenarios.git"
+      remoteBranch: "move-files"
       scripts:
-        - name: 'BI-Deployment'
+        - name: 'kubernetes-create-environment'
           description: ''
           type: KUBERNETES
           phase: CREATE
@@ -25,24 +25,21 @@ infrastructureConfig:
 deploymentConfig:
   deploymentPatterns:
     - name: 'deployment'
-      remoteRepository: "https://github.com/ThishaniLucas/wso2_testgrid_kubernetes.git"
-      remoteBranch: "branch1"
+      remoteRepository: "https://github.com/ThishaniLucas/ballerina-integrator-testgrid-scenarios.git"
+      remoteBranch: "move-files"
       description: 'deployment of the resources in the gke'
       scripts:
-        - name: 'deploy1'
+        - name: 'ballerina-integrator-deployment'
           type: SHELL
-          file: deploymentRepository/ballerina_intgrator_deployement.sh
+          file: testgrid-scripts/s3/s3_deployement.sh
           inputParameters:
             BallerinaVersion: "0.991.0"
             isDebugEnabled: "true"
-            TestGroup: "api_test"
-        - name: 'create-endpoint'
-          type: SHELL
-          file: deploymentRepository/ballerina_integrator_outputs.sh
+            TestGroup: "s3_test"
 scenarioConfigs:
   - testType: TESTNG
-    remoteRepository: "https://github.com/ThishaniLucas/ballerina_s3_test"
-    name: "test.sh"
+    remoteRepository: "https://github.com/ThishaniLucas/ballerina-integrator-testgrid-scenarios.git"
+    remoteBranch: "move-files"
+    name: "ballerina-integrator-testgrid-scenarios"
     description: "scenarios"
-    file: test.sh
-    
+    file: testgrid-scripts/s3/s3_test.sh
